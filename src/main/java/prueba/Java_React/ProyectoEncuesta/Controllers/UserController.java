@@ -1,7 +1,11 @@
 package prueba.Java_React.ProyectoEncuesta.Controllers;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+import prueba.Java_React.ProyectoEncuesta.models.request.UserRegisterRequestModel;
 
 
 
@@ -15,7 +19,7 @@ public class UserController {
     
     //Creamos un nuevo usuario
     @PostMapping()
-    public String CreateUser() {
+    public String CreateUser(@RequestBody @Valid UserRegisterRequestModel userModel) {
 
         return "Create second User";
     }
