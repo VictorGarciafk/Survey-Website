@@ -20,7 +20,7 @@ public class UserEntity {
 
     //asignamos el nombre de la tabla user
     @Column(nullable = false, length = 255)
-    private String nombre;
+    private String name;
 
     //asignamos el email de la tabla user
     @Column(nullable = false, length = 255)
