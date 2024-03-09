@@ -8,7 +8,6 @@ public class ProyectoEncuestaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoEncuestaApplication.class, args);
-		System.out.println("Recordatorio: Documenta tu codigo!!!");
+		System.out.println("Welcome Traveler!");
 	}
-
 }

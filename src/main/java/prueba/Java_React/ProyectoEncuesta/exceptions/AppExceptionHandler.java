@@ -26,7 +26,7 @@ public class AppExceptionHandler {
     //se obtendra la respuesta del HTTP acerca de la validacion y la ruta de la solicitud(Request)(pagina web) etc.,
     public ResponseEntity<Object> handleValidationErrorExceptiopn(MethodArgumentNotValidException ex, WebRequest webRequest){
 
-        //
+        //creamos un Map donde almacenara todos los errores en orden
         Map<String, String> errors = new HashMap<>();    
 
         //almacenamos los errores que haya arrojado los problemas de la validacion
