@@ -22,7 +22,6 @@ public class UserController {
     //POST(se utiliza para crear recursos), GET(para obtener recursos), 
     //DELETE(para eliminar recursos), PUT(para actualizar el recurso), PATCH(se utiliza para actualizar parcialmente el recurso)
     
-
     //se hace la inyeccion de las dependencias de la interfaz userServices dentro
     @Autowired 
     UserServices userServices;

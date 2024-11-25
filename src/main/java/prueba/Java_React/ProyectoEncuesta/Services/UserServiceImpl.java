@@ -1,6 +1,8 @@
 package prueba.Java_React.ProyectoEncuesta.Services;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import prueba.Java_React.ProyectoEncuesta.entities.UserEntity;
@@ -12,14 +14,13 @@ import prueba.Java_React.ProyectoEncuesta.repositories.UserRepository;
 //implementamos los metodos de la interfaz UserServices
 public class UserServiceImpl implements UserServices {
 
-    UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
+    private BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder(12);
 
-    //inyectamos la clase UserServiceImp mediante el constructor
-    public UserServiceImpl(UserRepository userRepository){
-            this.userRepository = userRepository;
-    }
 
-    @Override
+
+    
     public UserEntity createUser(UserRegisterRequestModel user) {
         //Creamos el objeto UserEntity
         UserEntity userEntity = new UserEntity();
@@ -28,8 +29,8 @@ public class UserServiceImpl implements UserServices {
         BeanUtils.copyProperties(user, userEntity);
 
         //al no coincidir la constraseña por la diferencia del nombre de las variables, obtenemos la contraseña en el userEntity
-        userEntity.setEncryptedPassword(user.getPassword());
-
+        userEntity.setEncryptedPassword(bCrypt.encode(user.getPassword()));
+        
         //retornamos la accion de guardar los datos del userEntity en la base de datos
         return userRepository.save(userEntity);
     }
